@@ -3,5 +3,9 @@ package com.project.hotelbooking.repositories;
 import com.project.hotelbooking.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<Long, User> {
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
+    boolean existsByEmail(String email);
 }
