@@ -8,10 +8,10 @@ import lombok.Data;
 
 public class LoginRequest {
 
-    @NotBlank(message = "Email обязателен")
-    @Email(message = "Некорректный формат email")
+    @NotBlank(message = "{user.email.notBlank}")
+    @Email(message = "{user.email.incorrectFormat}")
     private String email;
 
-    @NotBlank(message = "Пароль обязателен")
+    @NotBlank(message = "{user.password.notBlank}")
     private String password;
 }

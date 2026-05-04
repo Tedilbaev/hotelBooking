@@ -8,11 +8,11 @@ import lombok.Data;
 @Data
 public class RegisterRequest {
 
-    @NotBlank(message = "Email обязателен")
-    @Email(message = "Некорректный формат email")
+    @NotBlank(message = "{user.email.notBlank}")
+    @Email(message = "{user.email.incorrectFormat}")
     private String email;
 
-    @NotBlank(message = "Пароль обязателен")
-    @Size(min = 6, message = "Минимальная длина пароля 6 символов")
+    @NotBlank(message = "{user.password.notBlank}")
+    @Size(min = 6, message = "{user.password.minSize}")
     private String password;
 }
