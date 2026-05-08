@@ -1,6 +1,8 @@
 package com.project.hotelbooking.services;
 
 import com.project.hotelbooking.dto.requests.RegisterRequest;
+import com.project.hotelbooking.dto.response.UserResponse;
+import com.project.hotelbooking.mappers.UserMapper;
 import com.project.hotelbooking.models.User;
 import com.project.hotelbooking.models.enums.Role;
 import com.project.hotelbooking.repositories.UserRepository;
@@ -16,16 +18,18 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
 
-    public User registerUser(RegisterRequest registerRequest) {
-        if (userRepository.existsByEmail(registerRequest.getEmail())) {
+    public UserResponse registerUser(RegisterRequest registerRequest) {
+        if (userRepository.existsByEmail(registerRequest.email())) {
             throw new RuntimeException("Email занят");
         }
-        User user = new User();
-        user.setEmail(registerRequest.getEmail());
-        user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
-        user.setRole(Role.USER);
-        user.setCreatedAt(LocalDate.now());
-        return userRepository.save(user);
+        User user = User.builder()
+            .email(registerRequest.email())
+            .password(passwordEncoder.encode(registerRequest.password()))
+            .role(Role.USER)
+            .createdAt(LocalDate.now())
+            .build();
+        return userMapper.toUserResponse(userRepository.save(user));
     }
 }

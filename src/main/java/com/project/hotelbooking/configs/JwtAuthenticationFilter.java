@@ -1,4 +1,4 @@
-package com.project.hotelbooking.config;
+package com.project.hotelbooking.configs;
 
 import com.project.hotelbooking.utils.JwtUtil;
 import jakarta.servlet.FilterChain;

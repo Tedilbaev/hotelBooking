@@ -1,4 +1,4 @@
-package com.project.hotelbooking.config;
+package com.project.hotelbooking.configs;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
@@ -23,7 +23,6 @@ public class GlobalExceptionHandler {
         Map<String, String> errors = new HashMap<>();
 
         ex.getBindingResult().getFieldErrors().forEach(error -> {
-            // Получаем перевод сообщения, используя текущую локаль
             String errorMessage = messageSource.getMessage(error, LocaleContextHolder.getLocale());
             errors.put(error.getField(), errorMessage);
         });
