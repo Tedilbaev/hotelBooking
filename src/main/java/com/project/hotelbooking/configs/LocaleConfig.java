@@ -1,4 +1,4 @@
-package com.project.hotelbooking.config;
+package com.project.hotelbooking.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
