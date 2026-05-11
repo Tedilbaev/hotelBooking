@@ -18,6 +18,9 @@ spring:
     basename: messages
     encoding: UTF-8
     fallback-to-system-locale: false
+  mvc:
+    problemdetails:
+      enabled: true
 jwt:
   secret: 2TZph6zamnPAn2I1O5KlZPongz204LHaAjVBwdIilBx
   expiration: 86400000
